@@ -1,0 +1,7 @@
+{
+  "name": "tarea-1-makdieltabora",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
