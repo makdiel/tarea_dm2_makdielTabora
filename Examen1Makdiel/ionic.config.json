@@ -1,0 +1,7 @@
+{
+  "name": "Examen1Makdiel",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

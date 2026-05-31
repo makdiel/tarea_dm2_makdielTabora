@@ -1,20 +1,30 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Blanko
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="ion-padding">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Blank</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-button (click)="presentActionSheet()">Open</ion-button>
+
+  <h2>Números</h2>
+  <p> positivo: {{ Positivos() }}  </p>
+  <p> negativo: {{ Negativos() }} </p>
+
+  <hr>
+  <h2>Operaciones</h2>
+  <p> Suma: {{ suma() }} </p>
+  <p> Resta: {{ resta() }} </p>
+  <p> Multiplicación: {{ multiplicacion() }} </p>
+  <p> División: {{ division() }}  </p>
+
+
 </ion-content>
