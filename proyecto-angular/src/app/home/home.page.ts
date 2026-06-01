@@ -6,7 +6,7 @@ import { ActionSheetController, IonButton } from '@ionic/angular/standalone';
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonActionSheet, IonHeader, IonToolbar, IonTitle, IonContent, IonButton],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton],
 })
 export class HomePage {
   constructor(private actionSheetCtrl: ActionSheetController) { }

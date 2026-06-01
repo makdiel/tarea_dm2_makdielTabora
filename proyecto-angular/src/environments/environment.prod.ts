@@ -7,8 +7,10 @@ export const environment = {
         storageBucket: 'wallet-mak-app.firebasestorage.app',
         apiKey: 'AIzaSyDsLUPYla6fQX6fbg8Zc4s-_yCBdJbKnh8',
         authDomain: 'wallet-mak-app.firebaseapp.com',
-        messagingSenderId: '553145016498',
-        projectNumber: '553145016498',
+        messagingSenderId: '553145016498',      
         version: '2',
       }
 };
+
+
+//d  projectNumber: '553145016498',
