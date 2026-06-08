@@ -46,6 +46,24 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<key>NSPrivacyAccessedAPITypes</key>
+    <array>
+      <!-- Add this dict entry to the array if the PrivacyInfo file already exists -->
+      <dict>
+        <key>NSPrivacyAccessedAPIType</key>
+        <string>NSPrivacyAccessedAPICategoryUserDefaults</string>
+        <key>NSPrivacyAccessedAPITypeReasons</key>
+        <array>
+          <string>CA92.1</string>
+        </array>
+      </dict>
+    </array>
+	<key>NSCameraUsageDescription</key>
+	<string>El app requiere acceso a la cámara para permitirle actualizar su foto de perfil y adjuntar fotos de documentos.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>La aplicación necesita acceso a tu biblioteca de fotos para guardar fotos de tu perfil y adjuntar fotos de documentos.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>La aplicación necesita acceso a tu biblioteca de fotos para seleccionar fotos de perfil y adjuntar fotos de documentos.</string>
 	<true/>
 </dict>
 </plist>

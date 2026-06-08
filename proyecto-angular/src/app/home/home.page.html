@@ -15,7 +15,55 @@
 
   <ion-button (click)="presentActionSheet()">Open</ion-button>
 
-  <h2>Números</h2>
+  <!--Abrir toast por medio del ID del button, y el trigger en el toast-->
+  <ion-button color="warning" id="welcome-toast" expand="block">Open toast</ion-button>
+  <ion-toast trigger="welcome-toast" message="Mostrando un Mensaje tipo Toast" color="success" duration="6000" ></ion-toast>
+  
+  <!--Abri toast por medio de señanels-->
+   <ion-button color="primary" (click) = "openOrCloseToast()" expand="block">Open toast Signal</ion-button>
+  <ion-toast 
+    [isOpen]="openToast()"
+    message="Mostrando un Mensaje tipo Toast desde una señal" 
+    color="success" 
+    duration="6000" 
+    (didDismiss) = "openOrCloseToast()"
+    >
+  </ion-toast>
+
+  <!--Abri toast por medio de señanels-->
+   <ion-button color="primary" (click) = "openToastController()" expand="block">Open toast TotasController</ion-button>
+   <!--Abrir un ionAlert mediante un controlador -->
+   <ion-button color="primary" (click) = "showToast()" expand="block">Open Toast-Service</ion-button>
+
+   <!--Abrir un ionAlert mediante un trigger -->
+   <ion-button color="primary" id="mostrar-alerta" expand="block">Open AlertConfirmation trigger</ion-button>
+   <ion-alert
+    trigger="mostrar-alerta"
+    header="Alerta"
+    subHeader="?Esta seguro de la Alerta?"
+    message="Si muestras la alerta, se mostrara"
+    [buttons]="alertButtons"
+   ></ion-alert>
+
+   <!--Abrir un ionAlert mediante un trigger -->
+   <ion-button color="primary" (click) = "openOrCloseAlert()" expand="block">Open AlertConfirmation signal</ion-button>
+   <ion-alert
+    [isOpen]="isAlertOpen()"
+    header="Alerta"
+    subHeader="Esta seguro de la Alerta?"
+    message="Si muestras la alerta, se mostrara"
+    [buttons]="alertButtons"
+   ></ion-alert>
+
+    <!--Abrir un ionAlert mediante un controlador -->
+   <ion-button color="primary" (click) = "showAlert()" expand="block">Open AlertConfirmation AlertController</ion-button>
+
+ 
+   <!--Abrir un ionAlert mediante un controlador -->
+   <ion-button color="primary" (click) = "showAlertService()" expand="block">Open AlertConfirmation AlertServices</ion-button>
+
+
+   <h2>Números</h2>
   <p> positivo: {{ Positivos() }}  </p>
   <p> negativo: {{ Negativos() }} </p>
 

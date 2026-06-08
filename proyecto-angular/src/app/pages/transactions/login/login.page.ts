@@ -7,7 +7,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonNote, IonItem, IonLabel, IonText, IonInputPasswordToggle, IonButton, IonSpinner } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonNote, IonItem, IonLabel, IonText, IonInputPasswordToggle, IonButton, IonSpinner,IonInput } from '@ionic/angular/standalone';
 import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
@@ -15,7 +15,7 @@ import { ToastService } from 'src/app/services/toast.service';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   standalone: true,
-  imports: [IonSpinner, IonButton, IonText, IonLabel, IonItem, IonNote,
+  imports: [IonSpinner, IonButton, IonText, IonLabel, IonItem, IonNote,IonInput,
     IonContent,
     IonHeader,
     IonTitle,
@@ -27,8 +27,13 @@ import { ToastService } from 'src/app/services/toast.service';
 //implements OnInit
 export class LoginPage {
   // inject FormBuilder using the inject function and assign it to a private readonly property
+  //readonly, siginifica que nadie puede modificar la variable, inyeccion de dependencias
   private readonly _formBuilder: FormBuilder = inject(FormBuilder);
   private readonly _toastService: ToastService = inject(ToastService);
+  //otra forma de inyectar dependenciaas es dentro del constructor
+  //constructor(private readonly _formBuilder: FormBuilder){}
+
+
   // create a FormGroup for the login form using the FormBuilder and assign it to a public property
   loginForm: FormGroup = this._formBuilder.group({
     email: ['', [Validators.required, Validators.email]], // add email validator to the email field
@@ -65,6 +70,7 @@ export class LoginPage {
 
    get isFormValid(): boolean {
     return this.loginForm.valid;
+    console.log(this.loginForm)
   }
    
    signIn(): void {
@@ -77,7 +83,7 @@ export class LoginPage {
         await this._toastService.showToast('Login successful');
         this.isLoading.set(false);
         // Here you can add your authentication logic, e.g., call an API to verify the credentials
-      }, 20000); // Simulate a delay for the login process
+      }, 2000); // Simulate a delay for the login process
     }
   }
 
