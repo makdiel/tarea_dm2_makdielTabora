@@ -35,4 +35,28 @@ alertButtons = [
     (await alert).present();
   }
 
+  async showAlertConfirmation(confirm : ()=> void, title: string,message:string,subTitle:string) : Promise<void>{
+const alert = await this._alertController.create({
+      header: title,
+      subHeader: subTitle,
+      message: message,
+      mode: 'ios',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+        },
+        {
+          text: 'OK',
+          role: 'confirm',
+          handler: () => {
+            confirm();
+          },
+        },
+      ],
+    });
+    await alert.present();
+  }
+  
+
 }

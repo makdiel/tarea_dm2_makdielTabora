@@ -1,16 +1,20 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonActionSheet, IonToast, IonFabButton, ToastController,IonAlert,AlertController } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonActionSheet, IonToast, IonFabButton, ToastController,IonAlert,AlertController, IonItem, IonIcon } from '@ionic/angular/standalone';
 import { ActionSheetController, IonButton } from '@ionic/angular/standalone';
-import { text } from 'ionicons/icons';
+import { addIcons} from 'ionicons';
+import { text,checkmarkCircle,closeCircle,pencilOutline , addCircleOutline , trashOutline} from 'ionicons/icons';
 import { ToastService } from '../services/toast.service'; 
 import { AlertService } from '../services/shared/alert.service';
+import { UserService } from '../services/user/user.service';
+import { UserDto } from '../dtos/user/user.dto';
+
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonToast, IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonFabButton, IonAlert],
+  imports: [IonIcon, IonItem, IonToast, IonHeader, IonToolbar, IonTitle, IonContent, IonButton,  IonAlert],
 })
 export class HomePage {
 //injecto la dependencia de toas controller para mostrar los toast desde el ts
@@ -21,6 +25,8 @@ private readonly _alertController: AlertController = inject(AlertController);
 private readonly _toastService: ToastService = inject(ToastService);
 //injecto el servicio para las alertas
 private readonly _alertService : AlertService = inject(AlertService)
+private readonly _userService: UserService = inject(UserService)
+users = this._userService.users;
 
 isAlertOpen = signal(false);
 //creo el evento click para setear la señan en true
@@ -47,7 +53,51 @@ alertButtons = [
   }
 ];
 
-  constructor(private actionSheetCtrl: ActionSheetController) { }
+
+getUser(id: number): void {
+  this._userService.getUser(id);
+}
+
+deleteUser(id: number): void {
+  this._userService.confirmDeleteUser(id);
+}
+
+createUser(): void{
+  const newUser : UserDto = {
+  id: 0,
+    name: 'John deere',
+    username: 'johnd',
+    email: 'johnd@example.com',
+    addres: {
+        street: '123 Main St',
+        suite:'Apt 5',
+        city: 'DownTown',
+        zipcode: '12453',
+        geo:{
+            lat: '0.000',
+            lng: '0.455',
+        },
+    phone: '551-454-54',
+    website: 'site,com',
+    company: {
+        name: 'compay',
+        catchPhrase: '45',        
+        bs: 'bs',
+    },
+    },
+    }
+}
+  constructor(private actionSheetCtrl: ActionSheetController) { 
+    this._userService.getUsers(),
+    addIcons({
+      'chekmark-circle' :checkmarkCircle,
+      'close-circle':closeCircle,
+      'pencil-outline': pencilOutline , 
+      'add-circle-outline': addCircleOutline,
+      'trash-outline' : trashOutline,
+    });
+
+  }
   async presentActionSheet() {
     const actionSheet = await this.actionSheetCtrl.create({
       header: 'Seleccion una opcion:',
@@ -147,3 +197,4 @@ alertButtons = [
 
 
 }
+

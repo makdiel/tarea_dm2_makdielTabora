@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonNote, IonItem, IonLabel, IonText, IonInputPasswordToggle, IonButton, IonSpinner,IonInput } from '@ionic/angular/standalone';
 import { ToastService } from 'src/app/services/toast.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-login',
@@ -32,6 +33,9 @@ export class LoginPage {
   private readonly _toastService: ToastService = inject(ToastService);
   //otra forma de inyectar dependenciaas es dentro del constructor
   //constructor(private readonly _formBuilder: FormBuilder){}
+  //injecto el servicio que consume una Api de usuarios
+  private readonly _userService: UserService = inject(UserService)
+  users = this._userService.user;
 
 
   // create a FormGroup for the login form using the FormBuilder and assign it to a public property
@@ -78,7 +82,7 @@ export class LoginPage {
       this.isLoading.set(true);
       const loginData = this.loginForm.value;
       console.log('Login data:', loginData);
-
+      this._userService.getUsers();
       setTimeout(async () => {
         await this._toastService.showToast('Login successful');
         this.isLoading.set(false);

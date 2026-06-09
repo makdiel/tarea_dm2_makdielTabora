@@ -1,6 +1,8 @@
 export const environment = {
   production: true,
 
+  API_URL : 'https://jsonplaceholder.typicode.com/' ,
+
   FIREBASE_CONFIG : {
         projectId: 'wallet-mak-app',
         appId: '1:553145016498:web:e38bf2e07260309443e9ab',
